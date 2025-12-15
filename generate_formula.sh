@@ -56,20 +56,7 @@ fi
 # Get release data
 RELEASE_DATA=$(gh api "repos/$GITHUB_REPO/releases/tags/$RELEASE_TAG")
 
-# Find checksums file in release assets
-CHECKSUMS_FILE=$(echo "$RELEASE_DATA" | jq -r '.assets[] | select(.name | test("checksums?|SHA256|sha256"; "i")) | .browser_download_url' | head -1)
-
-if [ -z "$CHECKSUMS_FILE" ] || [ "$CHECKSUMS_FILE" = "null" ]; then
-    echo "Error: No checksums file found in release"
-    echo "The release must include a checksums file (checksums.txt, SHA256SUMS, etc.)"
-    echo "Please ensure the release contains a checksums file with SHA256 values"
-    exit 1
-fi
-
-echo "Found checksums file, extracting SHA256 values..."
-CHECKSUMS=$(gh release download "$RELEASE_TAG" --repo "$GITHUB_REPO" --pattern "$(basename "$CHECKSUMS_FILE")" --dir /tmp --clobber 2>/dev/null && cat /tmp/"$(basename "$CHECKSUMS_FILE")" || curl -sL "$CHECKSUMS_FILE")
-
-# Find Linux GNU and MUSL assets
+# Find Linux GNU and MUSL assets and their SHA256 digests
 LINUX_GNU_ASSET=$(echo "$RELEASE_DATA" | jq -r '.assets[] | select(.name | contains("linux-gnu")) | .browser_download_url' | head -1)
 LINUX_MUSL_ASSET=$(echo "$RELEASE_DATA" | jq -r '.assets[] | select(.name | contains("linux-musl")) | .browser_download_url' | head -1)
 
@@ -78,30 +65,22 @@ if [ -z "$LINUX_GNU_ASSET" ] && [ -z "$LINUX_MUSL_ASSET" ]; then
     exit 1
 fi
 
-# Extract SHA256 from checksums file
+# Extract SHA256 from GitHub API digest field
 LINUX_GNU_SHA256=""
 LINUX_MUSL_SHA256=""
 
 if [ -n "$LINUX_GNU_ASSET" ] && [ "$LINUX_GNU_ASSET" != "null" ]; then
-    GNU_FILENAME=$(basename "$LINUX_GNU_ASSET")
-    LINUX_GNU_SHA256=$(echo "$CHECKSUMS" | grep -i "$GNU_FILENAME" | awk '{print $1}' | head -1)
-    if [ -z "$LINUX_GNU_SHA256" ]; then
-        LINUX_GNU_SHA256=$(echo "$CHECKSUMS" | grep -i "linux-gnu" | awk '{print $1}' | head -1)
-    fi
-    if [ -z "$LINUX_GNU_SHA256" ]; then
-        echo "Error: Could not find SHA256 checksum for GNU binary in checksums file"
+    LINUX_GNU_SHA256=$(echo "$RELEASE_DATA" | jq -r '.assets[] | select(.name | contains("linux-gnu")) | .digest' | sed 's/sha256://' | head -1)
+    if [ -z "$LINUX_GNU_SHA256" ] || [ "$LINUX_GNU_SHA256" = "null" ]; then
+        echo "Error: Could not find SHA256 digest for GNU binary in GitHub API"
         exit 1
     fi
 fi
 
 if [ -n "$LINUX_MUSL_ASSET" ] && [ "$LINUX_MUSL_ASSET" != "null" ]; then
-    MUSL_FILENAME=$(basename "$LINUX_MUSL_ASSET")
-    LINUX_MUSL_SHA256=$(echo "$CHECKSUMS" | grep -i "$MUSL_FILENAME" | awk '{print $1}' | head -1)
-    if [ -z "$LINUX_MUSL_SHA256" ]; then
-        LINUX_MUSL_SHA256=$(echo "$CHECKSUMS" | grep -i "linux-musl" | awk '{print $1}' | head -1)
-    fi
-    if [ -z "$LINUX_MUSL_SHA256" ]; then
-        echo "Error: Could not find SHA256 checksum for MUSL binary in checksums file"
+    LINUX_MUSL_SHA256=$(echo "$RELEASE_DATA" | jq -r '.assets[] | select(.name | contains("linux-musl")) | .digest' | sed 's/sha256://' | head -1)
+    if [ -z "$LINUX_MUSL_SHA256" ] || [ "$LINUX_MUSL_SHA256" = "null" ]; then
+        echo "Error: Could not find SHA256 digest for MUSL binary in GitHub API"
         exit 1
     fi
 fi
