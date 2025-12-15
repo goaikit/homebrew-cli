@@ -15,7 +15,7 @@ aikit --version
 ```
 
 For detailed usage and documentation, please refer to:
-- GitHub: https://github.com/goaikit/aikit
+- GitHub: https://github.com/goaikit/cli
 
 ## Upgrading
 
