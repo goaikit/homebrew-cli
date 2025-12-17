@@ -27,6 +27,6 @@ brew upgrade aikit
 
 ```bash
 brew uninstall aikit
-brew untap goaikit/aikit
+brew untap goaikit/cli
 ```
 
