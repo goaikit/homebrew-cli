@@ -5,7 +5,7 @@ Install [aikit](https://github.com/goaikit/aikit) via Homebrew.
 ## Installation
 
 ```bash
-brew install goaikit/aikit/aikit
+brew install goaikit/cli/aikit
 ```
 
 ## Usage
