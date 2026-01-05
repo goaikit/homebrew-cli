@@ -4,7 +4,7 @@
 class Aikit < Formula
   desc "Universal Package Manager for AI Agent Extensions"
   homepage "https://github.com/goaikit/aikit"
-  version "0.1.21"
+  version "0.1.25"
   license "MIT"
 
   on_linux do
