@@ -4,7 +4,7 @@
 class Aikit < Formula
   desc "Universal Package Manager for AI Agent Extensions"
   homepage "https://github.com/goaikit/aikit"
-  version "0.1.30"
+  version "0.1.31"
   license "MIT"
 
   on_linux do
@@ -19,11 +19,11 @@ class Aikit < Formula
       end
 
       if glibc_version >= 2.38
-        url "https://github.com/goaikit/aikit/releases/download/v0.1.30/aikit-x86_64-unknown-linux-gnu.tar.gz"
-        sha256 "443116e53281e395f553a276dd256e632231687440197a8d9d95357771deac3f"
+        url "https://github.com/goaikit/aikit/releases/download/v0.1.31/aikit-x86_64-unknown-linux-gnu.tar.gz"
+        sha256 "b389ea57c978b379ba41d97cf2e55d694b7c13853339c61cbae46791b8fdc5bf"
       else
-        url "https://github.com/goaikit/aikit/releases/download/v0.1.30/aikit-x86_64-unknown-linux-musl.tar.gz"
-        sha256 "c0ab73670c2ec29fda546042c2904a2b1b82d8e13e5aa737b76e02686b0d7b56"
+        url "https://github.com/goaikit/aikit/releases/download/v0.1.31/aikit-x86_64-unknown-linux-musl.tar.gz"
+        sha256 "3e7206946dcd038f015e0444fcf7db61a5994f66070e9bfc819d967b5dca9dfc"
       end
     end
   end
