@@ -20,10 +20,10 @@ class Aikit < Formula
 
       if glibc_version >= 2.38
         url "https://github.com/goaikit/aikit/releases/download/v0.1.55/aikit-x86_64-unknown-linux-gnu.tar.gz"
-        sha256 "d7191db1f0b3c5215a82dc13299bcf0168b6e61d455852881507425a53395924"
+        sha256 "3bc8b290d9bfe3723e739e6882b1a91e08e452233922b5d16e0cf906e3436d9d"
       else
         url "https://github.com/goaikit/aikit/releases/download/v0.1.55/aikit-x86_64-unknown-linux-musl.tar.gz"
-        sha256 "6e892befef698531843e2252a8c960cb5c0875e5233ca5144f1572e9aeb46be7"
+        sha256 "f68d72fbfc183d2128928a93ed56cbdb612331cf54ac94ff51623b799557c7cb"
       end
     end
   end
