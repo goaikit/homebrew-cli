@@ -137,7 +137,7 @@ cat > "$FORMULA_FILE" <<FORMULA_EOF
 # frozen_string_literal: true
 
 class ${FORMULA_CLASS} < Formula
-  desc "Universal Package Manager for AI Agent Extensions"
+  desc "Multi-agent template package manager and CLI for AI coding assistants"
   homepage "https://github.com/${GITHUB_REPO}"
   version "${VERSION}"
   license "MIT"

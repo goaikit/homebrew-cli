@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 class Aikit < Formula
-  desc "Universal Package Manager for AI Agent Extensions"
+  desc "Multi-agent template package manager and CLI for AI coding assistants"
   homepage "https://github.com/goaikit/aikit"
   version "0.1.77"
   license "MIT"
