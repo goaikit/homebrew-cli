@@ -4,16 +4,16 @@
 class Aikit < Formula
   desc "Multi-agent template package manager and CLI for AI coding assistants"
   homepage "https://github.com/goaikit/aikit"
-  version "0.1.82"
+  version "0.1.83"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/goaikit/aikit/releases/download/v0.1.82/aikit-aarch64-apple-darwin.tar.gz"
-      sha256 "5e78dd3517e3ea776f2376c6ffc91434245b6f813c2cef33644d77143b3903ba"
+      url "https://github.com/goaikit/aikit/releases/download/v0.1.83/aikit-aarch64-apple-darwin.tar.gz"
+      sha256 "7bc0ddf2310ba736ce3e358b5c08f53db4f01c5fdde64e020ba2b35bff7622d7"
     elsif Hardware::CPU.intel?
-      url "https://github.com/goaikit/aikit/releases/download/v0.1.82/aikit-x86_64-apple-darwin.tar.gz"
-      sha256 "7054b3999724aa2fc526712425a353aa6aa3e612909c946791d42115aec6b22b"
+      url "https://github.com/goaikit/aikit/releases/download/v0.1.83/aikit-x86_64-apple-darwin.tar.gz"
+      sha256 "bf4f30ea4236692e4b2637b77d3ca9f780b3631c43fe999c0d8689bfaee0ee93"
     else
       odie "Unsupported macOS CPU architecture"
     end
@@ -31,11 +31,11 @@ class Aikit < Formula
       end
 
       if glibc_version >= 2.38
-        url "https://github.com/goaikit/aikit/releases/download/v0.1.82/aikit-x86_64-unknown-linux-gnu.tar.gz"
-        sha256 "4094ef6ae2f8634508fa1f7875f6311e1be9219b9d14a7c45162bd63888e751e"
+        url "https://github.com/goaikit/aikit/releases/download/v0.1.83/aikit-x86_64-unknown-linux-gnu.tar.gz"
+        sha256 "e597339519e0ebe884004e516b4e5e0b6e08d2c16a4c4752c9f129126dda9149"
       else
-        url "https://github.com/goaikit/aikit/releases/download/v0.1.82/aikit-x86_64-unknown-linux-musl.tar.gz"
-        sha256 "6c6f0baae1f3af164cec8c2cce3aef4364adc99162183320b1da7713e219b686"
+        url "https://github.com/goaikit/aikit/releases/download/v0.1.83/aikit-x86_64-unknown-linux-musl.tar.gz"
+        sha256 "6f9689b1c43d11a3d7218f518b541e7747a0a0fddcafe2969adde6d88e8f898d"
       end
     else
       odie "Unsupported Linux CPU architecture"
