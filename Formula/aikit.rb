@@ -4,16 +4,16 @@
 class Aikit < Formula
   desc "Multi-agent template package manager and CLI for AI coding assistants"
   homepage "https://github.com/goaikit/aikit"
-  version "0.1.99"
+  version "0.1.100"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/goaikit/aikit/releases/download/v0.1.99/aikit-aarch64-apple-darwin.tar.gz"
-      sha256 "0b793739be589809915499848e487af88309bbcef34cf4aeb775d28c4dcf80b2"
+      url "https://github.com/goaikit/aikit/releases/download/v0.1.100/aikit-aarch64-apple-darwin.tar.gz"
+      sha256 "fda1ee7c2ef4fbea4cd392aaa167434c1a12812811754c099bc6ff1881e58652"
     elsif Hardware::CPU.intel?
-      url "https://github.com/goaikit/aikit/releases/download/v0.1.99/aikit-x86_64-apple-darwin.tar.gz"
-      sha256 "8507438cb1c02b8f7bffe44afcc3926ca488d436e11114fbf604f8cb7e44072a"
+      url "https://github.com/goaikit/aikit/releases/download/v0.1.100/aikit-x86_64-apple-darwin.tar.gz"
+      sha256 "d4e48cbaf50220075d41d070e3238de4b1957b2cff6f3904a89efa1cd5adba7e"
     else
       odie "Unsupported macOS CPU architecture"
     end
@@ -31,11 +31,11 @@ class Aikit < Formula
       end
 
       if glibc_version >= 2.38
-        url "https://github.com/goaikit/aikit/releases/download/v0.1.99/aikit-x86_64-unknown-linux-gnu.tar.gz"
-        sha256 "8bd90be91c902089b3315ab33e09cab9169eae51919846b6ebff411d553906ff"
+        url "https://github.com/goaikit/aikit/releases/download/v0.1.100/aikit-x86_64-unknown-linux-gnu.tar.gz"
+        sha256 "076dbb89f9be8be953825b22f8e0a1402849e5002e8164289f555a0c37b8a82e"
       else
-        url "https://github.com/goaikit/aikit/releases/download/v0.1.99/aikit-x86_64-unknown-linux-musl.tar.gz"
-        sha256 "400a8780634f566a273047bb5fa62808a5fc5f7f63fa42daa6d4fcc17518aa24"
+        url "https://github.com/goaikit/aikit/releases/download/v0.1.100/aikit-x86_64-unknown-linux-musl.tar.gz"
+        sha256 "27d63562c48792f6b0f1ffc4839f2da5bc1dd1adc9b861a2bf3e519596a05c44"
       end
     else
       odie "Unsupported Linux CPU architecture"
