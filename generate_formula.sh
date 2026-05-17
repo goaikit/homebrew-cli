@@ -12,7 +12,6 @@ BINARY_NAME="aikit"
 LINUX_GNU_ASSET_NAME="aikit-x86_64-unknown-linux-gnu.tar.gz"
 LINUX_MUSL_ASSET_NAME="aikit-x86_64-unknown-linux-musl.tar.gz"
 MACOS_ARM_ASSET_NAME="aikit-aarch64-apple-darwin.tar.gz"
-MACOS_X64_ASSET_NAME="aikit-x86_64-apple-darwin.tar.gz"
 
 check_gh_available() {
   if ! command -v gh >/dev/null 2>&1; then
@@ -127,10 +126,6 @@ MACOS_ARM_URL=$(asset_field_exact "$RELEASE_DATA" "$MACOS_ARM_ASSET_NAME" "brows
 MACOS_ARM_DIGEST=$(asset_field_exact "$RELEASE_DATA" "$MACOS_ARM_ASSET_NAME" "digest")
 MACOS_ARM_SHA256=$(digest_without_prefix "$MACOS_ARM_DIGEST")
 
-MACOS_X64_URL=$(asset_field_exact "$RELEASE_DATA" "$MACOS_X64_ASSET_NAME" "browser_download_url")
-MACOS_X64_DIGEST=$(asset_field_exact "$RELEASE_DATA" "$MACOS_X64_ASSET_NAME" "digest")
-MACOS_X64_SHA256=$(digest_without_prefix "$MACOS_X64_DIGEST")
-
 FORMULA_FILE="Formula/${APP_NAME}.rb"
 cat > "$FORMULA_FILE" <<FORMULA_EOF
 # typed: false
@@ -146,11 +141,8 @@ class ${FORMULA_CLASS} < Formula
     if Hardware::CPU.arm?
       url "${MACOS_ARM_URL}"
       sha256 "${MACOS_ARM_SHA256}"
-    elsif Hardware::CPU.intel?
-      url "${MACOS_X64_URL}"
-      sha256 "${MACOS_X64_SHA256}"
     else
-      odie "Unsupported macOS CPU architecture"
+      odie "Unsupported macOS CPU architecture (Apple Silicon only)"
     end
   end
 
