@@ -4,13 +4,13 @@
 class Aikit < Formula
   desc "Multi-agent template package manager and CLI for AI coding assistants"
   homepage "https://github.com/goaikit/aikit"
-  version "0.1.116"
+  version "0.1.117"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/goaikit/aikit/releases/download/v0.1.116/aikit-aarch64-apple-darwin.tar.gz"
-      sha256 "747cbe66475ebedb6519e46395540ac1219f090133750ac56a22e5603b10f792"
+      url "https://github.com/goaikit/aikit/releases/download/v0.1.117/aikit-aarch64-apple-darwin.tar.gz"
+      sha256 "6ff76ea41fb816e72d96b422cc51d6113be861aeb7b33eb09186581e703b8137"
     else
       odie "Unsupported macOS CPU architecture (Apple Silicon only)"
     end
@@ -28,11 +28,11 @@ class Aikit < Formula
       end
 
       if glibc_version >= 2.38
-        url "https://github.com/goaikit/aikit/releases/download/v0.1.116/aikit-x86_64-unknown-linux-gnu.tar.gz"
-        sha256 "319c130f583ec59dcb973cec30ea102eec3d54e9c4573c0f87fb919b6e22ae55"
+        url "https://github.com/goaikit/aikit/releases/download/v0.1.117/aikit-x86_64-unknown-linux-gnu.tar.gz"
+        sha256 "89e4815bef0aea87547236e21455ab34a94f65aa0796b0265eadd9c504383c05"
       else
-        url "https://github.com/goaikit/aikit/releases/download/v0.1.116/aikit-x86_64-unknown-linux-musl.tar.gz"
-        sha256 "41844b618687ea451c1a85c5c0e5bb764a3cab0357505fa316528ec3795d8564"
+        url "https://github.com/goaikit/aikit/releases/download/v0.1.117/aikit-x86_64-unknown-linux-musl.tar.gz"
+        sha256 "6bdb0fff5bfe12dd5916d0f5556f3437fbc8b6aa779285bcf974c6de9d1e9ec1"
       end
     else
       odie "Unsupported Linux CPU architecture"
