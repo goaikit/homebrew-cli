@@ -10,7 +10,7 @@ class Aikit < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/goaikit/aikit/releases/download/v0.1.196/aikit-aarch64-apple-darwin.tar.gz"
-      sha256 "70c42ad60b5fc9f37930701c6917138f1aeaf0175bb6347157da9bed173f4575"
+      sha256 "ed2ac09edaec3b98f36cf07a6d1b186869c8300308a12ca61e6cf893ba47f38c"
     else
       odie "Unsupported macOS CPU architecture (Apple Silicon only)"
     end
@@ -29,10 +29,10 @@ class Aikit < Formula
 
       if glibc_version >= 2.38
         url "https://github.com/goaikit/aikit/releases/download/v0.1.196/aikit-x86_64-unknown-linux-gnu.tar.gz"
-        sha256 "d9abefc32d58a2990fe9d5cc16fd6814c87513ec385e4474e1c5419b17927a28"
+        sha256 "bdf7be51d735cb81e01af5b9f176a1a567a87a593e5baf46a8d2b7a3e522da1c"
       else
         url "https://github.com/goaikit/aikit/releases/download/v0.1.196/aikit-x86_64-unknown-linux-musl.tar.gz"
-        sha256 "e9454dae72a4753cab0adb0bdd494ecfe23e52d699f744d07d2d79cfa6bd5a39"
+        sha256 "8474962058b757ac0d24e0134243402cfd5e0953aa2bb1c0bcc855f2821b1369"
       end
     else
       odie "Unsupported Linux CPU architecture"
